@@ -1,10 +1,15 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <!-- VISTAS -->
+    <div id="main">
+      <router-view/>
     </div>
-    <router-view/>
+    <!-- NAV del FOOTER -->
+    <div id="nav" class="footer mt-4">
+      <router-link to="/">Juego</router-link> |
+      <router-link to="/about">Créditos</router-link>
+    </div>
+    
   </div>
 </template>
 
@@ -16,5 +21,10 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+body{
+  background-image: linear-gradient(to bottom right, red, yellow);
+  background-size: 100% 100%;
+  height: 90vh;
 }
 </style>

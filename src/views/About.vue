@@ -1,10 +1,6 @@
 <template>
   <div class="about">
-    <h1>Aqui manda el Nossa</h1>
-    <p>Ayachi es mi enemigo</p>
+    <img src="./../assets/logo.png"/>
+    <p><span class="text-uppercase">Aplicación creada por</span> n0ss4.</p>
   </div>
 </template>
-
-<script>
-alert("Hola");
-</script>
