@@ -25,6 +25,6 @@
 body{
   background-image: linear-gradient(to bottom right, red, yellow);
   background-size: 100% 100%;
-  height: 90vh;
+  height: 90.9vh;
 }
 </style>
