@@ -47,7 +47,7 @@
             class="col-12 mt-4 mb-4 d-flex justify-content-center"
             style="border: 1px dashed black; height: 40vh; border-color: white;"
           >
-            <span class="align-self-center text-white">NO IMAGE</span>
+              <img src="../assets/jugador1.gif" alt="jugador1">
           </div>
           <button class="col-5 w-100 mb-3 btn btn-danger" v-on:click="atacar(nombre)">
             <font-awesome-icon icon="fist-raised"/>
@@ -94,7 +94,7 @@
             class="col-12 mt-4 mb-4 d-flex justify-content-center"
             style="border: 1px dashed black; height: 40vh; border-color: white;"
           >
-            <span class="align-self-center text-white">NO IMAGE</span>
+            <img src="../assets/jugador2.gif" alt="jugador2">
           </div>
           <button
             class="col-5 w-100 mb-3 btn btn-danger"
