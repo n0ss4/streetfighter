@@ -1,10 +1,12 @@
+import router from "../router";
+
 export default {
   // EL DATA es per DECLARA les VARIABLES.
   data: function() {
     return {
       nombre: "",
       enemigo: ["Monstre", "Mag", "Restaurador"],
-      sumbit: false,
+      submit: false,
       numeroEnemigo: 0,
       color: ["green", "yellow", "orange", "red"],
       vidaEnemigo: 100,
@@ -24,7 +26,7 @@ export default {
   methods: {
     // COMENÇAR el PROGRAMA.
     empezar: function(e) {
-      this.sumbit = true;
+      this.submit = true;
       this.numeroEnemigo = Math.floor(Math.random() * 3);
       this.turno = Math.floor(Math.random() * 2);
       this.message = "¡PELEA!";
@@ -102,7 +104,6 @@ export default {
     },
     cpu: function() {
       // Ataques de la cpu de una manera aleatoria.
-      console.log("CPU");
       var self = this;
 
       setTimeout(function() {
@@ -125,8 +126,22 @@ export default {
       this.turno = 0;
       self.vida = 100;
       self.vidaEnemigo = 100;
-      self.sumbit = false;
+      self.submit = false;
       self.contadorRondas = 1;
+    },
+    handleOnClose: function() {
+      this.nombre = '';
+      this.submit = false;
+      this.vidaEnemigo = 100,
+      this.vida = 100,
+      this.contadorRondas = 1,
+      this.dany = 0,
+      this.curacio = 0,
+      this.message = "",
+      this.colorREnemigo = 0,
+      this.colorR = 0,
+      this.turno = 0,
+      router.push('/');
     }
   },
   // Això no es un metode :O, es una funció de vue que quan hi ha un canvi el programa s'executa.
@@ -146,7 +161,7 @@ export default {
     }
 
     // Si ja has introduït el nom fara el següent:
-    if (this.sumbit) {
+    if (this.submit) {
       // Barres de vida del teu personatge.
       if (this.vida >= 66 && this.vida <= 100) {
         this.colorR = 0;

@@ -1,7 +1,7 @@
 <!-- PRIMERA VIEW per MOSTRAR EL NOM DEL PERSONATGE -->
 <template>
   <div class="home">
-    <div v-if="!sumbit">
+    <div v-if="!submit">
       <img src="./../assets/logo.png" style="width: 30%; height: 30%;">
       <div class="row col-md-4 offset-md-4 mt-5">
         <!-- FORMULARI on ENVIO el NOM del PERSONATGE -->
@@ -28,7 +28,7 @@
       </div>
     </div>
     <!-- UN COP TINC EL NOM EL FORMULARI DESPAREIX I APAREIX LA BARALLA :D -->
-    <div v-if="sumbit" align="center">
+    <div v-if="submit" align="center">
       <div class="col-12 row">
         <!-- ESPAI del USUARI -->
         <div class="col-5">
@@ -49,26 +49,57 @@
           >
               <img src="../assets/jugador1.gif" alt="jugador1">
           </div>
-          <button class="col-5 w-100 mb-3 btn btn-danger" v-on:click="atacar(nombre)">
-            <font-awesome-icon icon="fist-raised"/>
-          </button>
-          <button
-            class="col-5 offset-2 mb-3 w-100 btn text-white"
-            style="background-color: blue;"
-            v-on:click="especial(nombre)"
-          >
-            <font-awesome-icon icon="star"/>
-          </button>
-          <button class="col-5 w-100 btn btn-success" v-on:click="curar(nombre)">
-            <font-awesome-icon icon="heart"/>
-          </button>
-          <button
-            class="col-5 offset-2 w-100 btn text-white"
-            style="background-color: black;"
-            v-on:click="rendir(nombre)"
-          >
-            <font-awesome-icon icon="skull-crossbones"/>
-          </button>
+          <!-- Quan pot tirar el jugador  -->
+          <template v-if="!turno">
+            <button class="col-5 w-100 mb-3 btn btn-danger" 
+            v-on:click="atacar(nombre)"
+            >
+              <font-awesome-icon icon="fist-raised"/>
+            </button>
+            <button
+              class="col-5 offset-2 mb-3 w-100 btn text-white"
+              style="background-color: blue;"
+              v-on:click="especial(nombre)"
+            >
+              <font-awesome-icon icon="star"/>
+            </button>
+            <button class="col-5 w-100 btn btn-success" v-on:click="curar(nombre)">
+              <font-awesome-icon icon="heart"/>
+            </button>
+            <button
+              class="col-5 offset-2 w-100 btn text-white"
+              style="background-color: black;"
+              v-on:click="rendir(nombre)"
+            >
+              <font-awesome-icon icon="skull-crossbones"/>
+            </button>
+          </template>
+
+          <!-- Quan no pot tirar el jugador -->
+          <template v-if="turno">
+            <button class="col-5 w-100 mb-3 btn btn-danger" 
+            disabled
+            >
+              <font-awesome-icon icon="fist-raised"/>
+            </button>
+            <button
+              class="col-5 offset-2 mb-3 w-100 btn text-white"
+              style="background-color: blue;"
+              disabled
+            >
+              <font-awesome-icon icon="star"/>
+            </button>
+            <button class="col-5 w-100 btn btn-success" disabled>
+              <font-awesome-icon icon="heart"/>
+            </button>
+            <button
+              class="col-5 offset-2 w-100 btn text-white"
+              style="background-color: black;"
+              disabled
+            >
+              <font-awesome-icon icon="skull-crossbones"/>
+            </button>
+          </template>
         </div>
         <!-- ON es MOSTREN les RONDES i els MISSATGES -->
         <div class="col-2">
@@ -135,6 +166,7 @@
             ok-title="Voler a jugar"
             hide-footer="true"
             hide-header="true"
+            @hidden="handleOnClose"
           >
             <h5 class="my-4">{{messageModal}}</h5>
             <iframe
